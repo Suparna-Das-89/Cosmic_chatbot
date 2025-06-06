@@ -1,3 +1,4 @@
+!pip install streamlit feedparser arxiv ephem llama-index-core llama-index-embeddings-huggingface llama-index-llms-groq sentence-transformers
 # ─────────────── 1. Imports ───────────────
 import streamlit as st
 import os
