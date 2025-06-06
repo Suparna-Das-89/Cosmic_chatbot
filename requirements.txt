@@ -9,3 +9,7 @@ torch
 ephem
 matplotlib
 numpy
+llama-index==0.10.20
+llama-index-core==0.10.20
+llama-index-embeddings-huggingface==0.1.3
+llama-index-llms-groq==0.1.3
