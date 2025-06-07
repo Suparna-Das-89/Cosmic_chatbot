@@ -378,26 +378,6 @@ Question: {query}
 Answer:
 """
         response = llm.complete(prompt=prompt)
-        st.subheader("💬 Cosmic Answer")
-        st.markdown(response.text)
-        if image_url:
-            st.image(image_url, caption=f"Wikipedia image for {topic}", width=300)
-        if page_url:
-            st.markdown(f"[🔗 Read more on Wikipedia]({page_url})")
-        if topic.lower() == "cosmic microwave background":
-            st.markdown("📊 Sample visual of CMB intensity vs wavelength:")
-            plot_cmb_example()
-else:
-    st.info("Enter a question about the cosmos to begin your journey! 🚀")
-
-Context:
-{final_context}
-
-Question: {query}
-
-Answer:
-"""
-        response = llm.complete(prompt=prompt)
 
         st.subheader("🔊 Topic Extracted:")
         st.code(topic)
