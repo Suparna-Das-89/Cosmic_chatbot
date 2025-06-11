@@ -1,0 +1,10 @@
+[server]
+headless = true
+port = $PORT
+enableCORS = false
+
+[theme]
+base = "light"
+
+[python]
+pythonVersion = "3.10"
