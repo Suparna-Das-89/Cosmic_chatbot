@@ -164,14 +164,7 @@ def plot_cmb_example():
 st.title("🌌 Ask the Cosmos")
 st.markdown("Type a space-related question (e.g., *When is the next full moon?* or *What is Jupiter?*)")
 
-#query = st.text_input("Ask your question about the universe:")
-query = st.text_input("Ask your question about the universe:")
-
-st.markdown("""
-<div style='text-align: center; font-size: 18px; margin-top: 10px; color: #cccccc;'>
-✨ Your answer will gently appear below... just scroll ✨
-</div>
-""", unsafe_allow_html=True)
+query = st.text_input("Ask your question about the universe (please scroll down for your answer):")
 
 
 st.subheader("📸 NASA Astronomy Picture of the Day")
