@@ -32,9 +32,11 @@ html, body, [class*="css"] {
 """, unsafe_allow_html=True)
 
 # ─────────────── 3. API Keys and LLM ───────────────
-os.environ["GROQ_API_KEY"] = "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"
-#NASA_API_KEY = "rD8cgucyU9Rgcn1iTaOeh7mo1CPd6oN4CYThCdjg"
-NASA_API_KEY = "ANQ8BVHQKuI1iYWqjUJhgLNzooitLCiZ2nvVD2gB"
+#os.environ["GROQ_API_KEY"] = "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"
+#NASA_API_KEY = "ANQ8BVHQKuI1iYWqjUJhgLNzooitLCiZ2nvVD2gB"
+os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+NASA_API_KEY = st.secrets["NASA_API_KEY"]
+
 
 embed_model = HuggingFaceEmbedding(model_name="all-MiniLM-L6-v2", device="cpu")
 Settings.embed_model = embed_model
