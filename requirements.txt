@@ -3,10 +3,10 @@ requests
 beautifulsoup4
 feedparser
 arxiv
-llama-index
-llama-index-embeddings-huggingface
-sentence-transformers
-torch
+llama-index==0.10.20
+llama-index-embeddings-huggingface==0.1.3
+sentence-transformers==2.2.2
+torch==2.7.1
 ephem
 matplotlib
 numpy
