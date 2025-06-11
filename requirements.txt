@@ -4,6 +4,7 @@ beautifulsoup4
 feedparser
 arxiv
 llama-index
+llama-index-embeddings-huggingface
 sentence-transformers
 torch
 ephem
