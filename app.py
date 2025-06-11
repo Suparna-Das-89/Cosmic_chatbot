@@ -9,11 +9,11 @@ import re
 import numpy as np
 import matplotlib.pyplot as plt
 import ephem
-from llama_index.core.schema import Document
-from llama_index.core import VectorStoreIndex, Settings
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.llms.groq import Groq
+from llama_index import VectorStoreIndex, Settings, Document  # ✅ 0.10.20 syntax
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding  # ✅ keep
+from llama_index.llms.groq import Groq  # ✅ OK
 from sentence_transformers import SentenceTransformer, util
+
 
 # ─────────────── 2. Page config and CSS ───────────────
 st.set_page_config(page_title="🌌 Cosmic Chatbot", layout="wide")
