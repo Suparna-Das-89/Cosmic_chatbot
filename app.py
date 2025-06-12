@@ -32,8 +32,6 @@ html, body, [class*="css"] {
 """, unsafe_allow_html=True)
 
 # ─────────────── 3. API Keys and LLM ───────────────
-#os.environ["GROQ_API_KEY"] = "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"
-#NASA_API_KEY = "ANQ8BVHQKuI1iYWqjUJhgLNzooitLCiZ2nvVD2gB"
 os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 NASA_API_KEY = st.secrets["NASA_API_KEY"]
 
