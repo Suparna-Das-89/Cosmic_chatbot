@@ -14,10 +14,6 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.groq import Groq
 from sentence_transformers import SentenceTransformer, util
 
-from huggingface_hub import login  
-
-#  right after the imports
-login(st.secrets["huggingface"]["token"])
 
 
 # ─────────────── 2. Page config and CSS ───────────────
