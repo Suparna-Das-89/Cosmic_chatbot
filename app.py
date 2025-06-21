@@ -41,7 +41,7 @@ embed_model = HuggingFaceEmbedding(model_name="all-MiniLM-L6-v2", device="cpu")
 Settings.embed_model = embed_model
 llm = Groq(model="llama3-70b-8192", api_key=os.environ["GROQ_API_KEY"])
 Settings.llm = llm
-sbert_model = SentenceTransformer("all-MiniLM-L6-v2")
+sbert_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
 
 # ─────────────── 4. Helper Functions ───────────────
 def get_apod_image():
