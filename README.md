@@ -45,6 +45,7 @@ arXiv Python : Scientific paper search
 
    Create a .streamlit/secrets.toml file and add:
    GROQ_API_KEY = "groq_api_key"
+   
    NASA_API_KEY = "nasa_api_key"
 
 6. **Run the app**
