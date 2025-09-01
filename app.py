@@ -34,7 +34,6 @@ html, body, [class*="css"] {
 
 # ─────────────── 3. API Keys and LLM ───────────────
 
-# Read secrets safely (don’t force-set os.environ)
 GROQ_API_KEY = st.secrets.get("GROQ_API_KEY")
 NASA_API_KEY = st.secrets.get("NASA_API_KEY")
 
@@ -46,30 +45,14 @@ if not GROQ_API_KEY:
 embed_model = HuggingFaceEmbedding(model_name="all-MiniLM-L6-v2", device="cpu")
 Settings.embed_model = embed_model
 
-# ✅ Use a current Groq model (pick one):
+# ✅ Using a current Groq model:
 # - High quality 70B: "llama-3.3-70b-versatile"
-# - Faster/cheaper 8B: "llama-3.1-8b-instant"
+
 llm = Groq(model="llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 Settings.llm = llm
 
 # SBERT for topic matching
 sbert_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
-
-
-
-
-
-
-
-#os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
-#NASA_API_KEY = st.secrets["NASA_API_KEY"]
-
-
-#embed_model = HuggingFaceEmbedding(model_name="all-MiniLM-L6-v2", device="cpu")
-#Settings.embed_model = embed_model
-#llm = Groq(model="llama3-70b-8192", api_key=os.environ["GROQ_API_KEY"])
-#Settings.llm = llm
-#sbert_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
 
 # ─────────────── 4. Helper Functions ───────────────
 def get_apod_image():
