@@ -33,15 +33,43 @@ html, body, [class*="css"] {
 """, unsafe_allow_html=True)
 
 # ─────────────── 3. API Keys and LLM ───────────────
-os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
-NASA_API_KEY = st.secrets["NASA_API_KEY"]
 
+# Read secrets safely (don’t force-set os.environ)
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY")
+NASA_API_KEY = st.secrets.get("NASA_API_KEY")
 
+if not GROQ_API_KEY:
+    st.error("Missing GROQ_API_KEY. Add it in Settings → Secrets.")
+    st.stop()
+
+# Embeddings
 embed_model = HuggingFaceEmbedding(model_name="all-MiniLM-L6-v2", device="cpu")
 Settings.embed_model = embed_model
-llm = Groq(model="llama3-70b-8192", api_key=os.environ["GROQ_API_KEY"])
+
+# ✅ Use a current Groq model (pick one):
+# - High quality 70B: "llama-3.3-70b-versatile"
+# - Faster/cheaper 8B: "llama-3.1-8b-instant"
+llm = Groq(model="llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 Settings.llm = llm
+
+# SBERT for topic matching
 sbert_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+
+
+
+
+
+
+
+#os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+#NASA_API_KEY = st.secrets["NASA_API_KEY"]
+
+
+#embed_model = HuggingFaceEmbedding(model_name="all-MiniLM-L6-v2", device="cpu")
+#Settings.embed_model = embed_model
+#llm = Groq(model="llama3-70b-8192", api_key=os.environ["GROQ_API_KEY"])
+#Settings.llm = llm
+#sbert_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
 
 # ─────────────── 4. Helper Functions ───────────────
 def get_apod_image():
@@ -144,10 +172,13 @@ def search_arxiv(query, max_results=5):
             query=query,
             max_results=max_results,
             sort_by=arxiv.SortCriterion.Relevance,
-            sort_order=arxiv.SortOrder.Descending)
-        return [f"{res.title}\n\n{res.summary}" for res in search.results()]
-    except:
+            sort_order=arxiv.SortOrder.Descending
+        )
+        client = arxiv.Client()
+        return [f"{res.title}\n\n{res.summary}" for res in client.results(search)]
+    except Exception:
         return []
+
 
 def plot_cmb_example():
     x = np.linspace(0.1, 10, 100)
@@ -179,7 +210,9 @@ title, img_url, desc = get_apod_image()
 if img_url:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-     st.image(img_url, caption=title, use_container_width=True)
+     st.image(img_url, caption=title, width="stretch")
+
+     #st.image(img_url, caption=title, use_container_width=True)
      st.markdown(f"<p style='text-align: center; font-size: 14px;'>{desc}</p>", unsafe_allow_html=True)
 
 st.subheader("📰 Latest NASA News")
