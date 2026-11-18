@@ -48,7 +48,7 @@ Settings.embed_model = embed_model
 # ✅ Using a current Groq model:
 # - High quality 70B: "llama-3.3-70b-versatile"
 
-llm = Groq(model="llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+llm = Groq(model="openai/gpt-oss-120b", api_key=GROQ_API_KEY)
 Settings.llm = llm
 
 # SBERT for topic matching
